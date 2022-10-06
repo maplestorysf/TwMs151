@@ -1,0 +1,84 @@
+------------------- Link -------------------
+被動技能效果 : 函數 recalcLocalStats 
+補助技能效果　：MapleStatEffect.applyBuffEffect 
+主動技能吸血 : 函數 onAttack
+技能特效 :　函數　SkillEffect MapleStatEffect.java
+出生地圖: LoginInformationProvider.java
+能力管理: CharLoginHandler.java
+登入&商城: InterServerHandler.java
+------------------- Special Command -------------------
+!Item -> God 100 !make 
+!drop -> God 100 
+------------------- Setting -------------------
+        玩家('@', 0),
+        捐贈者('#', 1),
+        超級捐贈者('$', 2),
+        實習生('!', 3),
+        遊戲管理員('!', 4),
+        超級遊戲管理員('!', 5),
+        總管理員('!', 6),
+        神('!', 100);
+------------------- UseFul method -------------------
+
+    FileoutputUtil.logToFile("檔案名稱.txt", "\r\n　檔案內容");//輸出
+
+    public static List<MapleCharacter> getAllCharacters() { //取得全世界玩家
+        List<MapleCharacter> chrlist = new ArrayList<>();
+        for (World worlds : LoginServer.getWorlds()) {
+            for (ChannelServer cs : worlds.getChannels()) {
+                for (MapleCharacter chra : cs.getPlayerStorage().getAllCharacters()) {
+                    chrlist.add(chra);
+                }
+            }
+        }
+        return chrlist;
+    }
+
+    public static List<MapleCharacter> getAllCharacters(int world) {//取得指定世界玩家
+        List<MapleCharacter> chrlist = new ArrayList<>();
+        for (ChannelServer cs : LoginServer.getInstance().getWorld(world).getChannels()) {
+            for (MapleCharacter chra : cs.getPlayerStorage().getAllCharacters()) {
+                chrlist.add(chra);
+            }
+        }
+        return chrlist;
+    }
+
+    public static void NowTime() {
+        Date now = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd   HH:mm:ss");//可以方便地修改日期格式    
+        String hehe = dateFormat.format(now);
+        System.out.println("現在時間 " + hehe);
+    }
+    public static void randomeNum() {
+        int redo = 5;
+        int MaxNum = 2;
+        for (int i = 0; i < redo; i++) {
+            //   System.out.println((rand(10, 20) * rand(2, 3)));
+            System.out.println("隨機數 " + (java.util.concurrent.ThreadLocalRandom.current().nextInt(MaxNum) + 1));
+        }
+    }
+
+------------------- CMS VS TMS Name -------------------
+明珠港 維多利亞港
+勇士部落 勇士之村
+魔法密林 魔法森林
+廢棄都市 墮落城市
+射手村 弓箭手村
+水下世界 水世界
+金銀島 維多利亞島
+
+龍神 龍魔島士
+預備兵 末日反抗軍
+火炮手 重砲指揮官
+惡魔獵手 惡魔殺手
+戰神 狂狼勇士
+暗影雙刀 影武者
+
+扎昆 炎魔
+品克繽 皮卡丘
+皮亞奴斯 海怒斯
+蝙蝠怪 巴洛古
+獅子王 凡雷恩
+阿卡伊勒 阿卡伊農
+黑暗希納斯 西格諾斯
